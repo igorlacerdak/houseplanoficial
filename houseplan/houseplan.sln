@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Apresentacao", "0 - Apresentacao", "{B1337759-65C2-43B7-BC3C-6C749FF7A593}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Dominio", "1 - Dominio", "{40D8CC3F-E3C0-434A-B715-799FA05927FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Servico", "2 - Servico", "{EC1915F8-15DE-42B4-BB31-91E06C2252C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infra", "3 - Infra", "{0AA591D0-42CF-4A68-9C35-593D139D0EA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Compartilhada", "4 - Compartilhada", "{A36AB685-C0DC-426B-BE1E-525047B436A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "houseplan.dominio", "houseplan.dominio\houseplan.dominio.csproj", "{9ADD5EB1-EC6B-4C59-90FD-7B0A669C2B79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9ADD5EB1-EC6B-4C59-90FD-7B0A669C2B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ADD5EB1-EC6B-4C59-90FD-7B0A669C2B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ADD5EB1-EC6B-4C59-90FD-7B0A669C2B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ADD5EB1-EC6B-4C59-90FD-7B0A669C2B79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9ADD5EB1-EC6B-4C59-90FD-7B0A669C2B79} = {40D8CC3F-E3C0-434A-B715-799FA05927FA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1325FE95-7660-4522-8FEC-ED16CEF51125}
+	EndGlobalSection
+EndGlobal
