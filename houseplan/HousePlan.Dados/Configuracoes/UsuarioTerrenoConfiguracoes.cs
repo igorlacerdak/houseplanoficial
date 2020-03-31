@@ -17,7 +17,6 @@ namespace HousePlan.Dados.Configuracoes
             builder.Property(f => f.COD_USUARIO_TERRENO).HasColumnName("COD_USUARIO_TERRENO").IsRequired();
             builder.Property(f => f.COD_USUARIO).HasColumnName("COD_USUARIO");
             builder.Property(f => f.COD_TERRENO).HasColumnName("COD_TERRENO");
-            builder.Property(f => f.CONTATO).HasColumnName("CONTATO");
             builder.Property(f => f.ATIVO).HasColumnName("ATIVO");
             builder.Property(f => f.CRIADO).HasColumnName("CRIADO");
             builder.Property(f => f.DELETADO).HasColumnName("DELETADO");
