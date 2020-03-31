@@ -7,9 +7,9 @@ using System.Text;
 
 namespace HousePlan.Dados.Configuracoes
 {
-    public class UsuarioEnderecoConfiguracoes : IEntityTypeConfiguration<Usuario>
+    public class UsuarioEnderecoConfiguracoes : IEntityTypeConfiguration<UsuarioEndereco>
     {
-        public void Configure(EntityTypeBuilder<Usuario> builder)
+        public void Configure(EntityTypeBuilder<UsuarioEndereco> builder)
         {
             builder.ToTable("TB_USUARIO_ENDERECO","HousePlan");
             builder.HasKey("COD_ENDERECO"); 

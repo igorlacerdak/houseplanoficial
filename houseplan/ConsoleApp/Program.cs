@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ConsoleApp
 {
-    class Program
+    public class Program
     {
         private static UsuarioServico _usuario = new UsuarioServico();
         static void Main(string[] args)
