@@ -20,11 +20,24 @@ namespace WebApi.Controllers
             usuarioServico = new UsuarioServico();
         }
 
+        [HttpGet]
+        public IEnumerable<Usuario> ListarTodos()
+        {
+            return usuarioServico.ListarTodos();
+        }
+
+
         [HttpPost]
         
         public NotificationResult Salvar (Usuario entidade)
         {
             return usuarioServico.Salvar(entidade);
+        }
+
+        [HttpDelete]
+        public string Excluir(Usuario entidade)
+        {
+            return usuarioServico.Excluir(entidade);
         }
     }
 }
