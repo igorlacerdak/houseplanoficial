@@ -7,10 +7,11 @@ using HousePlan.Dominio;
 using HousePlan.Servico;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using HousePlan.Comum;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
@@ -20,15 +21,13 @@ namespace WebApi.Controllers
             usuarioServico = new UsuarioServico();
         }
 
-        [HttpGet]
+        [HttpGet("ListarTodos")]
         public IEnumerable<Usuario> ListarTodos()
         {
             return usuarioServico.ListarTodos();
         }
 
-
-        [HttpPost]
-        
+        [HttpPost("Salvar")]  
         public NotificationResult Salvar (Usuario entidade)
         {
             return usuarioServico.Salvar(entidade);

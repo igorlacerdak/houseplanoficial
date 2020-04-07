@@ -1,5 +1,6 @@
 ﻿using HousePlan.Comum.NotificationPattern;
 using HousePlan.Dados;
+using HousePlan.Comum;
 using HousePlan.Dominio;
 using System;
 using System.Collections.Generic;
@@ -23,14 +24,18 @@ namespace HousePlan.Servico
             try
             {
                 entidade.CRIADO = DateTime.Now;
-                entidade.CPF = "123456789";
+                // entidade.CPF = "123456789";
 
-                if (!entidade.ValidarCPF())
-                    NotificationResult.Add(new NotificationError("CPF Invalido!", NotificationErrorType.BUSINESS_RULES));
+                if (!CPFUtil.Validar(entidade.CPF))
+                    NotificationResult.Add(new NotificationError("CPF invalido!", NotificationErrorType.USER));
 
+                if (!EmailUtil.ValidarEmail(entidade.EMAIL))
+                    NotificationResult.Add(new NotificationError("O Email informado é invalido!", NotificationErrorType.USER));
+                
                 if (NotificationResult.IsValid)
                 {
                     _usuario.Adicionar(entidade);
+                    NotificationResult.Add("Usuario Cadastro com Sucesso!");
                 }
 
                 return NotificationResult;
