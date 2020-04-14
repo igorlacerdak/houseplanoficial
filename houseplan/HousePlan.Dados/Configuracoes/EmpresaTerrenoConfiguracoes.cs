@@ -11,7 +11,7 @@ namespace HousePlan.Dados.Configuracoes
     {
         public void Configure(EntityTypeBuilder<EmpresaTerreno> builder)
         {
-            builder.ToTable("TB_EMPRESA_TERRENO","HousePlan");
+            builder.ToTable("TB_EMPRESA_TERRENO", "HousePlan");
             builder.HasKey("COD_EMPRESA_TERRENO");
 
             builder.Property(f => f.COD_EMPRESA_TERRENO).HasColumnName("COD_EMPRESA_TERRENO").IsRequired();
@@ -23,6 +23,15 @@ namespace HousePlan.Dados.Configuracoes
             builder.Property(f => f.ATUALIZADO).HasColumnName("ATUALIZADO");
             builder.Property(f => f.CRIADO_POR).HasColumnName("CRIADO_POR");
             builder.Property(f => f.ATUALIZADO_POR).HasColumnName("ATUALIZADO_POR");
+
+            builder.HasOne(f => f.Empresa)
+                .WithMany()
+                .HasForeignKey(f => f.COD_EMPRESA);
+           
+            builder.HasOne(f => f.Terreno)
+                .WithMany()
+                .HasForeignKey(f => f.COD_TERRENO);
+    
 
         }
     }

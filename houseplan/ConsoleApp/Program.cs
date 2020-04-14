@@ -14,10 +14,6 @@ namespace ConsoleApp
             Console.WriteLine("");
 
             var Usuarios = _usuario.ListarTodos();
-
-            Console.WriteLine(Usuario.Registros());
-            foreach (Usuario user in Usuarios)
-                Console.WriteLine(user);
         }
     }
 }

@@ -28,6 +28,8 @@ namespace HousePlan.Dominio
         public int CRIADO_POR { get; set; }
         public int ATUALIZADO_POR { get; set; }
 
+        public Empresa Empresa { get; set; }
+
     }
 
 }

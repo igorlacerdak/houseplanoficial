@@ -26,6 +26,11 @@ namespace HousePlan.Dominio
         public int CRIADO_POR { get; set; }
         public int ATUALIZADO_POR { get; set; }
 
+        public Projeto Projeto { get; set; }
+        public Usuario Usuario { get; set; }
+        public StatusContrato StatusContrato { get; set; }
+        public Terreno Terreno { get; set; }
+
     }
 
 }

@@ -31,6 +31,10 @@ namespace HousePlan.Dados.Configuracoes
             builder.Property(f => f.CRIADO_POR).HasColumnName("CRIADO_POR");
             builder.Property(f => f.ATUALIZADO_POR).HasColumnName("ATUALIZADO_POR");
 
+            builder.HasOne(f => f.Usuario)
+                   .WithMany()
+                   .HasForeignKey(f => f.COD_USUARIO);
+
         }
     }
 }
