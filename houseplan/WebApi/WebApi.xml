@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:WebApi.Controllers.UsuarioController">
+             <summary>
+             Usuario Controller Aplicãções em API
+             </summary>
+            
+        </member>
+        <member name="M:WebApi.Controllers.UsuarioController.ListarTodos">
+            <summary>
+            Listar Todos Usuarios Ativos no Sistema
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WebApi.Controllers.UsuarioController.Salvar(HousePlan.Dominio.Usuario)">
+            <summary>
+            Inserir usuario no Sistema
+            </summary>
+            <param name="entidade"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

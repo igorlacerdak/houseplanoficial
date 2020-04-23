@@ -7,35 +7,35 @@ using System.Collections.Generic;
 
 namespace HousePlan.Servico
 {
-    public class UsuarioServico
+    public class EmpresaServico
     {
-        private readonly UsuarioRepositorio _usuario;
+        private readonly EmpresaRepositorio _empresa;
 
-        public UsuarioServico()
+        public EmpresaServico()
         {
-            _usuario = new UsuarioRepositorio();
+            _empresa = new EmpresaRepositorio();
         }
 
 
-        public NotificationResult Salvar(Usuario entidade)
+        public NotificationResult Salvar(Empresa entidade)
         {
             var NotificationResult = new NotificationResult();
 
             try
             {
                 entidade.CRIADO = DateTime.Now;
-                
+               
 
-                if (!CPFUtil.Validar(entidade.CPF))
-                    NotificationResult.Add(new NotificationError("CPF invalido!", NotificationErrorType.USER));
+                if (!CNPJUtil.Validar(entidade.CNPJ))
+                    NotificationResult.Add(new NotificationError("CNPJ invalido!", NotificationErrorType.USER));
 
-                if (!EmailUtil.ValidarEmail(entidade.EMAIL))
-                    NotificationResult.Add(new NotificationError("O Email informado é invalido!", NotificationErrorType.USER));
+                if (String.IsNullOrEmpty(entidade.RAZAO_SOCIAL))
+                    NotificationResult.Add(new NotificationError("Necessario inserir Razão Social!", NotificationErrorType.USER));
                 
                 if (NotificationResult.IsValid)
                 {
-                    _usuario.Adicionar(entidade);
-                    NotificationResult.Add("Usuario Cadastro com Sucesso!");
+                    _empresa.Adicionar(entidade);
+                    NotificationResult.Add("Empresa cadastrada com Sucesso!");
                 }
 
                 return NotificationResult;
@@ -54,7 +54,7 @@ namespace HousePlan.Servico
 
         public IEnumerable<Usuario> ListarTodos()
         {
-            return _usuario.ListarTodos();
+            return _empresa.ListarTodos();
         }
     }
 }

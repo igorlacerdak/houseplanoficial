@@ -11,6 +11,10 @@ using HousePlan.Comum;
 
 namespace WebApi.Controllers
 {
+/// <summary>
+/// Usuario Controller Aplicãções em API
+/// </summary>
+///
     [Route("[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
@@ -20,20 +24,31 @@ namespace WebApi.Controllers
         {
             usuarioServico = new UsuarioServico();
         }
-
+        
+        /// <summary>
+        /// Listar Todos Usuarios Ativos no Sistema
+        /// </summary>
+        /// <returns></returns>
+        
         [HttpGet("ListarTodos")]
         public IEnumerable<Usuario> ListarTodos()
         {
             return usuarioServico.ListarTodos();
         }
 
+        /// <summary>
+        /// Inserir usuario no Sistema
+        /// </summary>
+        /// <param name="entidade"></param>
+        /// <returns></returns>
         [HttpPost("Salvar")]  
         public NotificationResult Salvar (Usuario entidade)
         {
             return usuarioServico.Salvar(entidade);
         }
 
-        [HttpDelete]
+
+        [HttpDelete("Excluir")]
         public string Excluir(Usuario entidade)
         {
             return usuarioServico.Excluir(entidade);
