@@ -23,19 +23,25 @@ namespace HousePlan.Servico
 
             try
             {
-                entidade.CRIADO = DateTime.Now;
-                
 
-                if (!CPFUtil.Validar(entidade.CPF))
-                    NotificationResult.Add(new NotificationError("CPF invalido!", NotificationErrorType.USER));
-
-                if (!EmailUtil.ValidarEmail(entidade.EMAIL))
-                    NotificationResult.Add(new NotificationError("O Email informado é invalido!", NotificationErrorType.USER));
-                
-                if (NotificationResult.IsValid)
+                if (entidade.COD_USUARIO == 0)
                 {
-                    _usuario.Adicionar(entidade);
-                    NotificationResult.Add("Usuario Cadastro com Sucesso!");
+                    entidade.CRIADO = DateTime.Now;
+                    entidade.COD_USUARIO = _usuario.Max_COD_USUARIO() + 1;
+
+
+                    if (!CPFUtil.Validar(entidade.CPF))
+                        NotificationResult.Add(new NotificationError("CPF invalido!", NotificationErrorType.USER));
+
+                    if (!EmailUtil.ValidarEmail(entidade.EMAIL))
+                        NotificationResult.Add(new NotificationError("O Email informado é invalido!", NotificationErrorType.USER));
+
+                    if (NotificationResult.IsValid)
+                    {
+                        _usuario.Adicionar(entidade);
+                        NotificationResult.Add("Usuario Cadastro com Sucesso!");  
+                    }
+
                 }
 
                 return NotificationResult;

@@ -12,8 +12,15 @@ namespace HousePlan.Dados
         {
             return Contexto
                 .Usuario
-                .Where(f => f.COD_USUARIO != 0);
- 
+                .Where(f => f.COD_USUARIO != 0); 
         }
+
+        public int Max_COD_USUARIO()
+        {
+            return Contexto
+                .Usuario
+                .Max(f => f.COD_USUARIO);
+        }
+
     }
 }
