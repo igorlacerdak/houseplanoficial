@@ -42,9 +42,11 @@ namespace HousePlan.Servico
                         NotificationResult.Add("Usuario Cadastro com Sucesso!");  
                     }
 
+                    return NotificationResult;
                 }
 
-                return NotificationResult;
+                else
+                    return NotificationResult.Add(new NotificationError("Erro ao realizar cadastro!", NotificationErrorType.USER)); ;
             }
 
             catch(Exception ex)
