@@ -39,5 +39,11 @@ namespace HousePlan.Dados
             Entidade.Remove(entidade);
             Contexto.SaveChanges();
         }
+
+        public void Update(T entidade)
+        {
+            Entidade.Update(entidade);
+            Contexto.SaveChanges();
+        }
     }
 }

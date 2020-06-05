@@ -22,5 +22,12 @@ namespace HousePlan.Dados
                 .Max(f => f.COD_USUARIO);
         }
 
+        public IEnumerable<Usuario> ListarAtivos()
+        {
+            return Contexto
+                .Usuario
+                .Where(f => f.ATIVO == 1);
+        }
+
     }
 }

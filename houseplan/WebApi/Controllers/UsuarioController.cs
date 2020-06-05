@@ -8,6 +8,7 @@ using HousePlan.Servico;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HousePlan.Comum;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
@@ -15,6 +16,7 @@ namespace WebApi.Controllers
 /// Usuario Controller Aplicãções em API
 /// </summary>
 ///
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
@@ -25,6 +27,20 @@ namespace WebApi.Controllers
             usuarioServico = new UsuarioServico();
         }
         
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public async Task<IActionResult> Authenticate([FromBody]Usuario userParam)
+        {
+            var usuario = await usuarioServico.Authenticate(userParam.LOGIN, userParam.SENHA);
+
+            if (usuario == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(usuario);
+        }
+
+
+
         /// <summary>
         /// Listar Todos Usuarios Ativos no Sistema
         /// </summary>
@@ -34,6 +50,12 @@ namespace WebApi.Controllers
         public IEnumerable<Usuario> ListarTodos()
         {
             return usuarioServico.ListarTodos();
+        }
+
+        [HttpGet("ListarAtivos")]
+        public IEnumerable<Usuario> ListarAtivos()
+        {
+            return usuarioServico.ListarAtivos();
         }
 
         /// <summary>
@@ -49,9 +71,17 @@ namespace WebApi.Controllers
 
 
         [HttpDelete("Excluir")]
-        public string Excluir(Usuario entidade)
+        public NotificationResult Excluir(Usuario entidade)
         {
             return usuarioServico.Excluir(entidade);
         }
+
+
+        [HttpPut("Atualizar")]
+        public NotificationResult Atualizar(Usuario entidade)
+        {
+            return usuarioServico.Atualizar(entidade);
+        }
+
     }
 }
