@@ -29,7 +29,7 @@ namespace WebApiGraphQL.Queries
                         NOME = contexto.GetArgument<string>("NOME"),
                     };
 
-                    return _usuario.ListarTodos();
+                    return _usuario.ObterUsuarios(filtro);
                 }
 
                 );

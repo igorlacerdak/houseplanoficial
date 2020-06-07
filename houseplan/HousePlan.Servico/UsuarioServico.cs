@@ -172,5 +172,11 @@ namespace HousePlan.Servico
         {
             return _usuario.ObterUsuarioPorID(COD_USUARIO);
         }
+
+        public Task<List<Usuario>> ObterUsuarios(Usuario filtro)
+        {
+            return _usuario.ObterUsuarios(filtro);
+        }
+
     }
 }

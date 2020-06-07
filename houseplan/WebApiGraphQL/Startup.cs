@@ -46,6 +46,7 @@ namespace WebApiGraphQL
             services.AddTransient<IUsuarioServico, UsuarioServico>();
             services.AddControllers();
             services.AddScoped<BlogSchema>();
+            services.AddScoped<UsuarioRepositorio>();
             services.AddScoped<UsuarioServico>();
             services.AddScoped<BlogQuery>();
             services.AddScoped<BlogMutation>();

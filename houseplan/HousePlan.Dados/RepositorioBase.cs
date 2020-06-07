@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using HousePlan.Dominio;
 
 namespace HousePlan.Dados
 {
@@ -42,6 +43,7 @@ namespace HousePlan.Dados
 
         public void Update(T entidade)
         {
+
             Entidade.Update(entidade);
             Contexto.SaveChanges();
         }

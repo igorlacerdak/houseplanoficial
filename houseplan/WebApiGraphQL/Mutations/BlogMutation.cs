@@ -1,5 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.Types;
+using HousePlan.Dados;
 using HousePlan.Dominio;
 using HousePlan.Servico;
 using System;
@@ -12,7 +13,7 @@ namespace WebApiGraphQL.Mutations
 {
     public class BlogMutation : ObjectGraphType<object>
     {
-        public BlogMutation(UsuarioServico _usuario)
+        public BlogMutation(UsuarioRepositorio _usuario)
         {
             Name = "Mutation";
             Field<UsuarioType>("criarUsuario",
@@ -22,7 +23,7 @@ namespace WebApiGraphQL.Mutations
                 resolve: context =>
                 {
                     var usuario = context.GetArgument<Usuario>("usuario");
-                    return _usuario.Salvar(usuario);
+                    return _usuario.Inserir(usuario);
                 });
 
             Field<UsuarioType>("alterarUsuario",
@@ -35,13 +36,13 @@ namespace WebApiGraphQL.Mutations
                     var usuario = context.GetArgument<Usuario>("usuario");
                     var cod = context.GetArgument<int>("usuarioId");
 
-                    var entidade = _usuario.ObterUsuarioPorID(cod);
-                    if (entidade == null)
+                    var dbUsuario = _usuario.ObterUsuarioPorID(cod);
+                    if (dbUsuario == null)
                     {
                         context.Errors.Add(new ExecutionError("Não foi possivel encontrar usuário na base de dados."));
                         return null;
                     }
-                    return _usuario.Atualizar(usuario);
+                    return _usuario.Alterar(dbUsuario, usuario);
                 });
 
                 Field<StringGraphType>("removerUsuario",
@@ -51,13 +52,13 @@ namespace WebApiGraphQL.Mutations
                 resolve: context =>
                 {
                     var cod = context.GetArgument<int>("usuarioId");
-                    var dbUsuario = _usuario.ObterUsuarioPorID(cod);
-                    if (dbUsuario == null)
+                    var entidade = _usuario.ObterUsuarioPorID(cod);
+                    if (entidade == null)
                     {
                         context.Errors.Add(new ExecutionError("Não foi possivel encontrar usuário na base de dados."));
                         return null;
                     }
-                    _usuario.Excluir(dbUsuario);
+                    _usuario.Excluir(entidade);
                     return $"O usuario com id {cod} foi removido";
                 });
         }
