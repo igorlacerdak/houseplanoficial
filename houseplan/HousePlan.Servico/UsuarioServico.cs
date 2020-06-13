@@ -168,6 +168,10 @@ namespace HousePlan.Servico
             return _usuario.ListarAtivos();
         }
 
+
+        // -------------------------------- GRAPHQL ------------------------------------ \\
+
+
         public Usuario ObterUsuarioPorID(int COD_USUARIO)
         {
             return _usuario.ObterUsuarioPorID(COD_USUARIO);

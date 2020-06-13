@@ -39,9 +39,9 @@ namespace WebApiGraphQL
         public void ConfigureServices(IServiceCollection services)
         {
             services.
-        AddMvc(option => option.EnableEndpointRouting = false)
-        .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-        .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            AddMvc(option => option.EnableEndpointRouting = false)
+            .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            .AddNewtonsoftJson(opt => opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
             services.AddSingleton<IDependencyResolver>(s => new FuncDependencyResolver(s.GetRequiredService));
             services.AddTransient<IUsuarioServico, UsuarioServico>();
             services.AddControllers();

@@ -39,24 +39,31 @@ namespace WebApi.Controllers
             return Ok(usuario);
         }
 
-
-
         /// <summary>
         /// Listar Todos Usuarios Ativos no Sistema
         /// </summary>
         /// <returns></returns>
-        
-        [HttpGet("ListarTodos")]
-        public IEnumerable<Usuario> ListarTodos()
+        /// 
+        [HttpGet("UsuarioID")]
+
+        public Usuario ObterUsuarioPorID(int COD_USUARIO)
         {
-            return usuarioServico.ListarTodos();
+            return usuarioServico.ObterUsuarioPorID(COD_USUARIO);
         }
+
 
         [HttpGet("ListarAtivos")]
         public IEnumerable<Usuario> ListarAtivos()
         {
             return usuarioServico.ListarAtivos();
         }
+
+        [HttpGet("ListarTodos")]
+        public IEnumerable<Usuario> ListarTodos()
+        {
+            return usuarioServico.ListarTodos();
+        }
+
 
         /// <summary>
         /// Inserir usuario no Sistema

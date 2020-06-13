@@ -10,6 +10,9 @@ namespace HousePlan.Dados
 {
     public class UsuarioRepositorio : RepositorioBase<Usuario>
     {
+        // -------------------------------- REST API ------------------------------------ \\
+
+
         public IEnumerable<Usuario> ListarTodos()
         {
             return Contexto
@@ -30,6 +33,15 @@ namespace HousePlan.Dados
                 .Usuario
                 .Where(f => f.ATIVO == 1);
         }
+
+
+
+
+
+
+       // -------------------------------- GRAPHQL ------------------------------------ \\
+
+
 
         public Usuario ObterUsuarioPorID(int COD_USUARIO)
         {
@@ -53,6 +65,7 @@ namespace HousePlan.Dados
             dbUsuario.CPF = usuario.CPF;
             dbUsuario.EMAIL = usuario.EMAIL;
             dbUsuario.LOGIN = usuario.LOGIN;
+            dbUsuario.ATIVO = usuario.ATIVO;
 
             Contexto.SaveChanges();
 
@@ -62,6 +75,7 @@ namespace HousePlan.Dados
 
         public Usuario Inserir(Usuario usuario)
         {
+            usuario.CRIADO = DateTime.Now;
             Contexto.Add(usuario);
             Contexto.SaveChanges();
 
@@ -71,7 +85,8 @@ namespace HousePlan.Dados
 
         public Usuario Excluir(Usuario usuario)
         {
-            usuario.ATIVO = 1;
+            usuario.ATIVO = 0;
+            usuario.DELETADO = DateTime.Now;
             Contexto.SaveChanges();
 
             return usuario;

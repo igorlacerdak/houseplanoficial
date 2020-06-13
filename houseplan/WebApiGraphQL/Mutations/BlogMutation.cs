@@ -23,6 +23,18 @@ namespace WebApiGraphQL.Mutations
                 resolve: context =>
                 {
                     var usuario = context.GetArgument<Usuario>("usuario");
+
+                    if (usuario.COD_USUARIO == 0)
+                    {
+                       usuario.COD_USUARIO = _usuario.Max_COD_USUARIO() + 1;
+                       usuario.ATIVO = 1;
+                    }
+                    else
+                    {
+                        context.Errors.Add(new ExecutionError("Não foi possivel inserir novo usuario."));
+                        return null;
+                    }
+
                     return _usuario.Inserir(usuario);
                 });
 

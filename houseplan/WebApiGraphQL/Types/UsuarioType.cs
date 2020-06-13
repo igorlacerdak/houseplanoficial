@@ -18,7 +18,7 @@ namespace WebApiGraphQL.Types
             Field(f => f.EMAIL).Description("Email do usuário");
             Field(f => f.LOGIN).Description("Login do usuário");
             Field(f => f.SENHA).Description("Senha do Usuario");
-            Field(f => f.ATIVO).Description("Senha do Usuario");
+            Field(f => f.ATIVO).Description("Ativação do Usuario");
             Field(f => f.CRIADO, type: typeof(DateTimeGraphType)).Description("Data criação do usuario");
         }
     }

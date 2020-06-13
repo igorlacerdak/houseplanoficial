@@ -8,7 +8,7 @@ namespace HousePlan.Dominio
     {
         public Usuario()
         {
-            CRIADO = DateTime.Now;
+            //CRIADO = DateTime.Now;
             
         }
 
