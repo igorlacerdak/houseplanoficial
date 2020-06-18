@@ -25,7 +25,7 @@ namespace HousePlan.Dados
         {
             return Contexto
                 .Set<T>()
-                .ToList();
+                .AsNoTracking().ToList();
         }
 
         public void Adicionar(T entidade)

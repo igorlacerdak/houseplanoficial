@@ -52,6 +52,11 @@ namespace HousePlan.Servico
             _usuario = new UsuarioRepositorio();
         }
 
+        public Usuario ObterUsuarioPorID(int COD_USUARIO)
+        {
+            return _usuario.ObterUsuarioPorID(COD_USUARIO);
+        }
+
 
         public NotificationResult Salvar(Usuario entidade)
         {
@@ -135,7 +140,7 @@ namespace HousePlan.Servico
                 if (entidade.COD_USUARIO != 0)
 
                     entidade.COD_USUARIO = entidade.COD_USUARIO;
-                entidade.ATUALIZADO = DateTime.Now;
+                    entidade.ATUALIZADO = DateTime.Now;
 
                 if (NotificationResult.IsValid)
                 {

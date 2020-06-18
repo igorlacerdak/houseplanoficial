@@ -22,10 +22,16 @@ namespace WebApi.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly UsuarioServico usuarioServico;
+        private readonly EnderecoServico enderecoServico;
+        private readonly UsuarioContatoServico usuarioContatoServico;
+
         public UsuarioController()
         {
             usuarioServico = new UsuarioServico();
+            usuarioContatoServico = new UsuarioContatoServico();
         }
+
+
         
         [AllowAnonymous]
         [HttpPost("authenticate")]
@@ -58,6 +64,11 @@ namespace WebApi.Controllers
             return usuarioServico.ListarAtivos();
         }
 
+        [HttpGet("Usuario")]
+        public Usuario ObterUsuarioPorID(int COD_USUARIO)
+        {
+            return usuarioServico.ObterUsuarioPorID(COD_USUARIO);
+        }
         /// <summary>
         /// Inserir usuario no Sistema
         /// </summary>
