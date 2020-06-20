@@ -133,5 +133,12 @@ namespace HousePlan.Servico
         {
             return _endereco.ListarAtivos();
         }
+
+        public UsuarioEndereco ObterEnderecoUsuario(int COD_USUARIO)
+        {
+            return _endereco.ObterEnderecoPorUsuario(COD_USUARIO);
+        }
+
     }
+
 }

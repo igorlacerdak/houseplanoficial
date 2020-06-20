@@ -22,11 +22,24 @@ namespace HousePlan.Dados
                 .Max(f => f.COD_CONTATO);
         }
 
+        public UsuarioContato VerificaTipoContato (int COD_CONTATO_TIPO)
+        {
+            return Contexto
+                .UsuarioContato.FirstOrDefault(f => f.COD_CONTATO_TIPO == COD_CONTATO_TIPO);
+        }
+
         public IEnumerable<UsuarioContato> ListarAtivos()
         {
             return Contexto
                 .UsuarioContato
                 .Where(f => f.ATIVO == 1);
+        }
+
+        public IEnumerable<UsuarioContato> ObterContatoPorUsuario (int COD_USUARIO)
+        {
+            return Contexto
+                .UsuarioContato
+                .Where(f => f.COD_USUARIO == COD_USUARIO);
         }
 
     }

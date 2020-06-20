@@ -8,12 +8,16 @@ namespace HousePlan.Dados
 {
     public class EmpresaRepositorio : RepositorioBase<Empresa>
     {
-        public IEnumerable<Usuario> ListarTodos()
+        public IEnumerable<Empresa> ListarTodos()
         {
             return Contexto
-                .Usuario
-                .Where(f => f.COD_USUARIO != 0);
- 
+                .Empresa
+                .Where(f => f.COD_EMPRESA != 0);
+        }
+        public Empresa ObterEmpresaPorID (int COD_EMPRESA)
+        {
+            return Contexto
+                .Empresa.FirstOrDefault(f => f.COD_EMPRESA == COD_EMPRESA);
         }
     }
 }

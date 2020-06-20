@@ -50,14 +50,80 @@ namespace HousePlan.Servico
             }
         }
 
-        public string Excluir(Usuario entidade)
+        public NotificationResult Atualizar(Projeto entidade)
         {
-            return "";
+            var NotificationResult = new NotificationResult();
+
+            try
+            {
+                if (entidade.COD_PROJETO != 0)
+
+                    entidade.COD_PROJETO = entidade.COD_PROJETO;
+                    entidade.ATUALIZADO = DateTime.Now;
+
+                if (NotificationResult.IsValid)
+                {
+                    _projeto.Update(entidade);
+                    NotificationResult.Add("Projeto Alterado com Sucesso!");
+
+                    return NotificationResult;
+                }
+
+                else
+                {
+                    return NotificationResult.Add(new NotificationError("O codigo informado não existe!", NotificationErrorType.USER));
+
+                }
+            }
+            catch (Exception ex)
+            {
+                return NotificationResult.Add(new NotificationError("O codigo informado não existe!", NotificationErrorType.USER));
+            }
+
+        }
+
+        public NotificationResult Excluir(Projeto entidade)
+        {
+            var NotificationResult = new NotificationResult();
+
+            try
+            {
+                if (entidade.COD_PROJETO != 0)
+                {
+
+                    entidade.DELETADO = DateTime.Now;
+                    entidade.ATIVO = 0;
+
+                    if (NotificationResult.IsValid)
+                    {
+                        _projeto.Update(entidade);
+                        NotificationResult.Add("Projeto excluido com Sucesso!");
+
+                        return NotificationResult;
+                    }
+
+                    else
+                        return NotificationResult.Add(new NotificationError("O codigo informado não existe!", NotificationErrorType.USER));
+                }
+
+                else
+                    return NotificationResult.Add(new NotificationError("O codigo informado não existe!", NotificationErrorType.USER));
+            }
+
+            catch (Exception ex)
+            {
+                return NotificationResult.Add(new NotificationError(ex.Message));
+            }
         }
 
         public IEnumerable<Usuario> ListarTodos()
         {
             return _projeto.ListarTodos();
+        }
+
+        public Projeto ProjetoEmpresa(int COD_PROJETO)
+        {
+            return _projeto.ProjetoEmpresa(COD_PROJETO);
         }
     }
 }

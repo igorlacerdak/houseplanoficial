@@ -29,6 +29,10 @@ namespace HousePlan.Dados.Configuracoes
                    .WithMany()
                    .HasForeignKey(f => f.COD_USUARIO);
 
+            builder.HasOne(f => f.ContatoTipo)
+                   .WithMany()
+                   .HasForeignKey(f => f.COD_CONTATO_TIPO);
+
         }
     }
 }

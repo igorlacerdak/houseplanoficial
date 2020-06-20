@@ -12,27 +12,24 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
-/// <summary>
-/// Usuario Controller Aplicãções em API
-/// </summary>
-///
+    /// <summary>
+    /// Usuario Controller Aplicãções em API
+    /// </summary>
+    ///
     [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {
         private readonly UsuarioServico usuarioServico;
-        private readonly EnderecoServico enderecoServico;
-        private readonly UsuarioContatoServico usuarioContatoServico;
 
         public UsuarioController()
         {
             usuarioServico = new UsuarioServico();
-            usuarioContatoServico = new UsuarioContatoServico();
         }
 
 
-        
+
         [AllowAnonymous]
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody]Usuario userParam)
@@ -51,7 +48,7 @@ namespace WebApi.Controllers
         /// Listar Todos Usuarios Ativos no Sistema
         /// </summary>
         /// <returns></returns>
-        
+
         [HttpGet("ListarTodos")]
         public IEnumerable<Usuario> ListarTodos()
         {
@@ -69,13 +66,9 @@ namespace WebApi.Controllers
         {
             return usuarioServico.ObterUsuarioPorID(COD_USUARIO);
         }
-        /// <summary>
-        /// Inserir usuario no Sistema
-        /// </summary>
-        /// <param name="entidade"></param>
-        /// <returns></returns>
-        [HttpPost("Salvar")]  
-        public NotificationResult Salvar (Usuario entidade)
+
+        [HttpPost("Salvar")]
+        public NotificationResult Salvar(Usuario entidade)
         {
             return usuarioServico.Salvar(entidade);
         }
@@ -93,6 +86,5 @@ namespace WebApi.Controllers
         {
             return usuarioServico.Atualizar(entidade);
         }
-
     }
 }

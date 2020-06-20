@@ -24,10 +24,10 @@ namespace HousePlan.Dominio
         public string REFERENCIA { get; set; }
         public int ATIVO { get; set; }
         public DateTime CRIADO { get; set; }
-        public DateTime ATUALIZADO { get; set; }
-        public DateTime DELETADO { get; set; }
+        public DateTime? ATUALIZADO { get; set; }
+        public DateTime? DELETADO { get; set; }
         public int CRIADO_POR { get; set; }
-        public int ATUALIZADO_POR { get; set; }
+        public int? ATUALIZADO_POR { get; set; }
 
         public Usuario Usuario { get; set; }
 

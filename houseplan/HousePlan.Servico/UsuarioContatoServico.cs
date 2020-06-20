@@ -33,6 +33,7 @@ namespace HousePlan.Servico
                 {
                     entidade.CRIADO = DateTime.Now;
                     entidade.COD_CONTATO = _usuarioContato.Max_COD_CONTATO() + 1;
+                    entidade.COD_CONTATO_TIPO = entidade.COD_CONTATO_TIPO;
 
 
                     if (entidade.COD_CONTATO_TIPO == 0 )
@@ -132,6 +133,11 @@ namespace HousePlan.Servico
         public IEnumerable<UsuarioContato> ListarAtivos()
         {
             return _usuarioContato.ListarAtivos();
+        }
+
+        public IEnumerable<UsuarioContato> ObterContatoPorUsuario(int COD_USUARIO)
+        {
+            return _usuarioContato.ObterContatoPorUsuario(COD_USUARIO);
         }
     }
 }

@@ -29,5 +29,12 @@ namespace HousePlan.Dados
                 .Where(f => f.ATIVO == 1);
         }
 
+        public UsuarioEndereco ObterEnderecoPorUsuario (int COD_USUARIO)
+        {
+            return Contexto
+                .UsuarioEndereco
+                .FirstOrDefault(f => f.COD_USUARIO == COD_USUARIO);
+        }
+
     }
 }
